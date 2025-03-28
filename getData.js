@@ -1,16 +1,19 @@
 import url from "./url.js";
-
-async function getData() {
-    try {
-        const disneyData = await fetch(url);
-        if (!disneyData.ok) {
-            throw new Error("Lo siento...", disneyData.status)
-        }
-        const transformData = await disneyData.json();
-        return transformData.info.data
-    } catch (error) {
-        console.log(error.message)
+ 
+async function getData () {
+   try { const data =  await fetch(url);
+    if(!data.ok) {
+        throw new Error("Upps... :", data.status);
+       
     }
+    let dataJson =  await data.json();
+        console.log(dataJson.results);
+        return dataJson.data;
+   } catch (error) {
+    console.log(error.message);
+   
+   }
 }
 
 export default getData;
+ 

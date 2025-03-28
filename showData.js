@@ -1,15 +1,11 @@
 import getData from "./getData.js";
-
-async function showData() {
-    const api = await getData();
-    const div = document.getElementById("container");
-    api.forEach(a => {
+const showData = async () => {
+    const data = await getData();
+    const div = document.getElementById("Container");
+    data.forEach(e => {
         const pe = document.createElement("p");
-        const img = document.createElement("img");
-        
-        pe.innerHTML = a.name;
-        img.setAttribute("src", a.imageUrl);
+        pe.innerHTML = e.name;
+        div.appendChild(pe);
     });
 }
-
 export default showData;
